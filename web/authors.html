@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Authors · Torn Script Registry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="landing authors-page">
+  <div class="grunge"></div>
+
+  <header class="topbar landing-topbar">
+    <a class="brand brand-link" href="index.html" title="Back to home">
+      <span class="brand-mark">T</span>
+      <div class="brand-text">
+        <h1>SCRIPT&nbsp;REGISTRY</h1>
+        <span class="brand-sub">Tools &amp; Userscripts Dossier</span>
+      </div>
+    </a>
+    <nav class="landing-nav">
+      <a href="browse.html" class="lnav-link">Browse</a>
+      <a href="authors.html" class="lnav-link active">Authors</a>
+      <a href="https://www.torn.com/forums.php#/p=forums&f=67" target="_blank" rel="noopener" class="lnav-link">Forum</a>
+    </nav>
+  </header>
+
+  <section class="authors-hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">LEADERBOARD · BY THE NUMBERS</div>
+      <h2 class="hero-headline">Top Authors</h2>
+      <p class="hero-tagline">
+        Everyone who has shipped scripts to the Torn community, ranked by reach and reliability.
+        Score blends working-script count with total installs.
+      </p>
+      <div class="hero-substats">
+        <span id="authCount">— authors</span>
+        <span class="hero-sep">·</span>
+        <span id="authScripts">— scripts</span>
+        <span class="hero-sep">·</span>
+        <span id="authInstalls">— installs</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="authors-section">
+    <header class="featured-head">
+      <div>
+        <h2 class="section-title">Leaderboard</h2>
+        <p class="section-sub">Click any author to see their thread on the Torn forums.</p>
+      </div>
+      <div class="authors-controls">
+        <label class="auth-sort">
+          Sort by
+          <select id="sortBy">
+            <option value="score" selected>Score</option>
+            <option value="working">Working scripts</option>
+            <option value="scripts">Total scripts</option>
+            <option value="installs">Total installs</option>
+            <option value="name">Name (A–Z)</option>
+          </select>
+        </label>
+        <input type="search" id="authQ" placeholder="Filter by name…" autocomplete="off" class="auth-filter" />
+      </div>
+    </header>
+
+    <div id="authorsTableWrap" class="authors-table-wrap">
+      <div class="loading">Loading authors…</div>
+    </div>
+  </section>
+
+  <footer class="footer landing-footer">
+    <span>Built from <code>data/registry.json</code></span>
+    <span class="footer-right"><a href="browse.html">Browse the full registry →</a></span>
+  </footer>
+
+  <script src="authors.js"></script>
+</body>
+</html>
