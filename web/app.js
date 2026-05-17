@@ -113,8 +113,7 @@ function initFacets() {
   document.getElementById("cntOk").textContent = statusCounts.ok || 0;
   document.getElementById("cntStale").textContent = statusCounts.stale || 0;
   document.getElementById("cntBroken").textContent = statusCounts.broken || 0;
-  document.getElementById("cntUnknown").textContent =
-    (statusCounts.unknown || 0) + (statusCounts["no-url"] || 0);
+  document.getElementById("cntUnknown").textContent = statusCounts.unknown || 0;
 }
 
 function buildChips(elId, field, kind) {
