@@ -140,7 +140,7 @@ body {
   background: #1a1a1a;
   border: 1px solid var(--line);
   border-radius: 3px;
-  min-width: 88px;
+  min-width: 150px;
 }
 .rollup i {
   width: 8px; height: 8px; border-radius: 50%;
