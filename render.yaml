@@ -1,21 +1,17 @@
 # Render.com blueprint for the Torn Script Registry.
 # Connect this repo on render.com → "New +" → "Blueprint" → pick this file.
+#
+# Data lives in the repo at ./data/ and is served read-only in PROD mode.
+# To refresh content on the deployed site, commit new data files and push.
 services:
   - type: web
     name: script-registry
     runtime: python
     plan: free
-    # No deps beyond the Python stdlib, so the build step is a no-op.
-    buildCommand: "python -c \"print('no build needed')\""
+    buildCommand: "pip install -r requirements.txt"
     startCommand: "python server.py"
     envVars:
       - key: PYTHON_VERSION
         value: "3.12.5"
       - key: PROD
         value: "1"
-      - key: DATA_DIR
-        value: "/var/data"
-    disk:
-      name: registry-data
-      mountPath: /var/data
-      sizeGB: 1
