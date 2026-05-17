@@ -30,6 +30,7 @@ API (all JSON, no auth):
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import sys
 import re
@@ -41,13 +42,20 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 HERE = Path(__file__).parent
-DATA_DIR = HERE / "data"
+# DATA_DIR may be overridden via env so hosts like Render can mount a
+# persistent disk at a known path while local dev keeps using ./data.
+DATA_DIR = Path(os.environ.get("DATA_DIR") or (HERE / "data"))
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 REGISTRY_PATH = DATA_DIR / "registry.json"
 SITE_CONFIG_PATH = DATA_DIR / "site_config.json"
 BACKUPS_DIR = DATA_DIR / "backups"
 LOG_PATH = DATA_DIR / "admin_log.jsonl"
 WEB_DIR = HERE / "web"
 ADMIN_DIR = HERE / "admin"
+
+# Production mode disables the admin UI and all write endpoints. Render sets
+# the RENDER env var automatically; set PROD=1 to force the same elsewhere.
+PROD = bool(os.environ.get("RENDER") or os.environ.get("PROD"))
 
 # Make sibling modules importable
 sys.path.insert(0, str(HERE))
@@ -706,6 +714,8 @@ class Handler(BaseHTTPRequestHandler):
 
         # Static folders
         if path == "/web" or path == "/admin":
+            if PROD and path == "/admin":
+                return self._send(404, b"Not Found", CT_TEXT)
             self.send_response(301)
             self.send_header("Location", path + "/")
             self.end_headers()
@@ -714,6 +724,8 @@ class Handler(BaseHTTPRequestHandler):
             rel = path[len("/web/"):] or "index.html"
             return self._serve_file(WEB_DIR / rel)
         if path.startswith("/admin/"):
+            if PROD:
+                return self._send(404, b"Not Found", CT_TEXT)
             rel = path[len("/admin/"):] or "index.html"
             return self._serve_file(ADMIN_DIR / rel)
         if path.startswith("/data/"):
@@ -724,6 +736,9 @@ class Handler(BaseHTTPRequestHandler):
 
     # ----- API ------------------------------------------------------------
     def _route_api(self, method: str, path: str, qs: dict):
+        # In production the API is read-only; all mutating verbs are blocked.
+        if PROD and method not in ("GET", "HEAD"):
+            return self._send_err(403, "read-only in production")
         parts = [p for p in path.split("/") if p]
         # parts[0] == "api"
         if len(parts) < 2:
@@ -847,9 +862,12 @@ def serve(host: str = "127.0.0.1", port: int = 8765) -> None:
     load_site_config()
     backfilled = backfill_body_url_hints()
     httpd = ThreadingHTTPServer((host, port), Handler)
+    print(f"  Mode:            {'PRODUCTION (read-only, no admin)' if PROD else 'local dev'}")
     print(f"  Public registry: http://{host}:{port}/web/")
-    print(f"  Admin console:   http://{host}:{port}/admin/")
+    if not PROD:
+        print(f"  Admin console:   http://{host}:{port}/admin/")
     print(f"  API base:        http://{host}:{port}/api/")
+    print(f"  Data dir:        {DATA_DIR}")
     print(f"  Records loaded:  {len(_records)}")
     if backfilled:
         print(f"  Body-URL hints:  scanned {backfilled} new records")
@@ -864,8 +882,14 @@ def serve(host: str = "127.0.0.1", port: int = 8765) -> None:
 
 if __name__ == "__main__":
     import argparse
+    # Env vars take precedence so hosts like Render can configure the bind
+    # without changing argv. PORT is provided by most PaaS providers; HOST
+    # defaults to 0.0.0.0 when PORT is set so the container is reachable.
+    env_port = os.environ.get("PORT")
+    default_host = os.environ.get("HOST") or ("0.0.0.0" if env_port else "127.0.0.1")
+    default_port = int(env_port) if env_port else 8765
     p = argparse.ArgumentParser(description="Torn Script Registry — admin/API server")
-    p.add_argument("--host", default="127.0.0.1")
-    p.add_argument("--port", type=int, default=8765)
+    p.add_argument("--host", default=default_host)
+    p.add_argument("--port", type=int, default=default_port)
     args = p.parse_args()
     serve(args.host, args.port)
