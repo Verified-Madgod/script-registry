@@ -1,0 +1,4 @@
+# Torn Script Registry has zero third-party dependencies.
+# The server and helper scripts use only the Python 3.10+ standard library.
+# This file exists so Render / Heroku-style buildpacks detect Python and
+# run `pip install -r requirements.txt` cleanly (a no-op install).
