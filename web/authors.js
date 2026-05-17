@@ -1,8 +1,8 @@
 // Top Authors page — aggregates registry by author and renders a leaderboard.
 (function () {
   const state = {
-    authors: [],   // [{username, id, scripts, working, broken, stale, installs, score, latest, topScript}]
-    sortBy: "score",
+    authors: [],   // [{username, id, scripts, working, broken, stale, installs, latest, topScript}]
+    sortBy: "installs",
     query: "",
   };
 
@@ -68,13 +68,7 @@
       }
     }
 
-    // score = working*100 + installs/10 + scripts*5 (so quality and reach both count)
-    const list = [];
-    for (const a of map.values()) {
-      a.score = Math.round(a.working * 100 + a.installs / 10 + a.scripts * 5);
-      list.push(a);
-    }
-    return list;
+    return Array.from(map.values());
   }
 
   // ---------- Render ----------
@@ -115,7 +109,6 @@
             <th class="col-num">Scripts</th>
             <th class="col-num">Working</th>
             <th class="col-num">Installs</th>
-            <th class="col-num">Score</th>
             <th class="col-top">Top script</th>
           </tr>
         </thead>
@@ -152,19 +145,17 @@
         <td class="col-num">${fmtNum(a.scripts)}</td>
         <td class="col-num accent">${fmtNum(a.working)}</td>
         <td class="col-num">${fmtNum(a.installs)}</td>
-        <td class="col-num score">${fmtNum(a.score)}</td>
         <td class="col-top">${topCell}</td>
       </tr>`;
   }
 
   function sorter(key) {
     switch (key) {
-      case "working":  return (a, b) => b.working - a.working || b.score - a.score;
-      case "scripts":  return (a, b) => b.scripts - a.scripts || b.score - a.score;
-      case "installs": return (a, b) => b.installs - a.installs || b.score - a.score;
+      case "working":  return (a, b) => b.working - a.working || b.installs - a.installs;
+      case "scripts":  return (a, b) => b.scripts - a.scripts || b.installs - a.installs;
       case "name":     return (a, b) => a.username.localeCompare(b.username);
-      case "score":
-      default:         return (a, b) => b.score - a.score;
+      case "installs":
+      default:         return (a, b) => b.installs - a.installs || b.working - a.working;
     }
   }
 
