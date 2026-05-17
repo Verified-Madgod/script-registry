@@ -27,17 +27,3 @@ Userscripts subforum.
    author, last-updated), per-script page with screenshot, install button,
    working/broken badge, related threads.
 5. **Submission flow**: PR-based or simple form → reviewer queue.
-
-## Why us
-Our scrape **is** the seed catalog — already deduplicated, with full
-post bodies for URL extraction and description mining.
-
-## MVP scope
-- Extract URLs from `scripts/*.txt` → `data/registry.json`.
-- Static HTML index with client-side filter (no server required).
-- Manual health badges before automating.
-
-## Stretch
-- Public submission API.
-- "Trending" / "most-installed" via opt-in telemetry.
-- Browser extension that surfaces the registry in-game.
