@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Torn Script Registry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="landing">
+  <div class="grunge"></div>
+
+  <header class="topbar landing-topbar">
+    <div class="brand">
+      <span class="brand-mark">T</span>
+      <div class="brand-text">
+        <h1>SCRIPT&nbsp;REGISTRY</h1>
+        <span class="brand-sub">Tools &amp; Userscripts Dossier</span>
+      </div>
+    </div>
+    <nav class="landing-nav">
+      <a href="browse.html" class="lnav-link">Browse</a>
+      <a href="https://www.torn.com/forums.php#/p=forums&f=67" target="_blank" rel="noopener" class="lnav-link">Forum</a>
+    </nav>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">EST. TORN CITY · SINCE FOREVER</div>
+      <h2 class="hero-headline" id="heroHeadline">Every Torn script.<br/>One dossier.</h2>
+      <p class="hero-tagline" id="heroTagline">
+        A curated, health-checked index of every userscript, extension, bot, sheet, and tool
+        the Torn community has shipped.
+      </p>
+      <div class="hero-cta">
+        <a class="hero-btn primary" href="browse.html">Browse the registry →</a>
+        <a class="hero-btn ghost" href="#featured">See featured</a>
+      </div>
+      <div class="hero-substats">
+        <span id="heroSubCount">— scripts catalogued</span>
+        <span class="hero-sep">·</span>
+        <span>updated continuously</span>
+        <span class="hero-sep">·</span>
+        <span>health-checked</span>
+      </div>
+    </div>
+
+    <!-- compact at-a-glance numbers -->
+    <div class="hero-stats">
+      <div class="hstat">
+        <span class="hstat-v" id="statTotal">—</span>
+        <span class="hstat-k">scripts</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-v" id="statWorking">—</span>
+        <span class="hstat-k">working</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-v" id="statTools">—</span>
+        <span class="hstat-k">tool types</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-v" id="statAuthors">—</span>
+        <span class="hstat-k">authors</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FEATURED ===================== -->
+  <section class="featured-section" id="featuredSection">
+    <header class="featured-head" id="featured">
+      <div>
+        <h2 class="section-title">Featured Scripts</h2>
+        <p class="section-sub">Hand-picked tools the community keeps coming back to.</p>
+      </div>
+      <a href="browse.html" class="featured-allbtn">All scripts →</a>
+    </header>
+    <div class="featured-grid" id="featuredGrid">
+      <div class="loading">Loading featured…</div>
+    </div>
+  </section>
+
+  <footer class="footer landing-footer">
+    <span>Built from <code>data/registry.json</code> · health checks from <code>health_check.py</code></span>
+    <span class="footer-right"><a href="browse.html">Browse the full registry →</a></span>
+  </footer>
+
+  <script src="landing.js"></script>
+</body>
+</html>

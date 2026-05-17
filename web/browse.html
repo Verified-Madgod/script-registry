@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Torn Script Registry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grunge"></div>
+
+  <header class="topbar">
+    <a class="brand brand-link" href="index.html" title="Back to home">
+      <span class="brand-mark">T</span>
+      <div class="brand-text">
+        <h1>SCRIPT&nbsp;REGISTRY</h1>
+        <span class="brand-sub">Tools &amp; Userscripts Dossier</span>
+      </div>
+    </a>
+    <div class="topbar-search">
+      <input type="search" id="q" placeholder="Search title, author, tag…" autocomplete="off" />
+      <span class="topbar-hint">/&nbsp;to focus</span>
+    </div>
+    <nav class="topbar-stats" id="rollupStats">
+      <span class="rollup ok"><i></i><b id="cntOk">0</b><em>working</em></span>
+      <span class="rollup stale"><i></i><b id="cntStale">0</b><em>stale</em></span>
+      <span class="rollup broken"><i></i><b id="cntBroken">0</b><em>broken</em></span>
+      <span class="rollup unknown"><i></i><b id="cntUnknown">0</b><em>unknown</em></span>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <section class="panel">
+        <header class="panel-h">Status</header>
+        <div class="panel-b" id="filterStatus"></div>
+      </section>
+
+      <section class="panel">
+        <header class="panel-h">Category</header>
+        <div class="panel-b chips" id="filterCategory"></div>
+      </section>
+
+      <section class="panel">
+        <header class="panel-h">Tool Type</header>
+        <div class="panel-b chips" id="filterTool"></div>
+      </section>
+
+      <section class="panel">
+        <header class="panel-h">Sort</header>
+        <div class="panel-b">
+          <select id="sortBy">
+            <option value="last_updated">Most recently updated</option>
+            <option value="installs">Most installed</option>
+            <option value="rating">Highest forum rating</option>
+            <option value="views">Most viewed thread</option>
+            <option value="posts">Most discussed</option>
+            <option value="first_post">Newest thread</option>
+            <option value="alpha">Alphabetical</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="panel">
+        <header class="panel-h">Reset</header>
+        <div class="panel-b">
+          <button class="btn-flat" id="resetBtn">Clear all filters</button>
+        </div>
+      </section>
+    </aside>
+
+    <main class="main">
+      <div class="resultsbar">
+        <span id="resultCount" class="result-count">…</span>
+        <span class="result-meta" id="resultMeta"></span>
+      </div>
+      <section id="grid" class="grid">
+        <div class="loading">Loading registry…</div>
+      </section>
+      <div class="pager" id="pager"></div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <span>Built from <code>data/registry.json</code> · health checks from <code>health_check.py</code></span>
+    <span class="footer-right">Last health sweep: <b id="lastSweep">—</b></span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
