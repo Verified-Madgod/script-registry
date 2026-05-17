@@ -31,17 +31,14 @@ admin/
 **/admin/
 
 # ---------------------------------------------------------------------------
-# Local persisted state (registry, health cache, audit log, backups, site
-# config). The public site can ship with a sample dataset instead.
+# Local persisted state. The public registry.json and site_config.json are
+# shipped so the deployed site has data on first boot. Everything else
+# (audit log, health cache, backups) stays local-only.
 # ---------------------------------------------------------------------------
-data/
-**/data/
-**/registry.json
-**/registry.csv
-**/site_config*
-**/health_cache*
+**/data/backups/
 **/admin_log*
-**/backups/
+**/health_cache*
+**/registry.csv
 
 # ---------------------------------------------------------------------------
 # Misc
