@@ -1,5 +1,170 @@
 [
   {
+    "thread_id": -2,
+    "title": "[NEW SCRIPT] Yata War Filters",
+    "author": {
+      "username": "Madgod",
+      "id": 1733719
+    },
+    "forum_id": 16565020,
+    "first_post_time": "2026-05-17T03:39:54Z",
+    "last_post_time": "2026-05-17T03:39:54Z",
+    "first_post_iso": "2026-05-17T03:39:54Z",
+    "last_post_iso": "2026-05-17T03:39:54Z",
+    "posts": 0,
+    "views": 0,
+    "rating": 0,
+    "is_locked": false,
+    "is_sticky": false,
+    "thread_url": "https://www.torn.com/forums.php#/p=threads&f=67&t=16565020",
+    "body_file": null,
+    "body_chars": 0,
+    "url_count": 1,
+    "urls": [
+      {
+        "url": "https://greasyfork.org/en/scripts/578457-yata-war-filters ",
+        "kind": "install",
+        "host": "greasyfork.org",
+        "host_label": "Greasy Fork"
+      }
+    ],
+    "primary_url": {
+      "url": "https://greasyfork.org/en/scripts/578457-yata-war-filters ",
+      "kind": "install",
+      "host": "greasyfork.org",
+      "host_label": "Greasy Fork"
+    },
+    "secondary_url": null,
+    "intent": "offering",
+    "tool_type": "userscript",
+    "tags": [],
+    "_added_manually": true,
+    "_manual_edits": {
+      "_created": "2026-05-17T03:39:54Z"
+    },
+    "health": {
+      "checked_at": "2026-05-17T03:40:04Z",
+      "status": "ok",
+      "primary_status": "ok",
+      "last_updated": "2026-05-16T20:08:36Z",
+      "url_checks": [
+        {
+          "url": "https://greasyfork.org/en/scripts/578457-yata-war-filters ",
+          "kind": "install",
+          "host": "greasyfork.org",
+          "http_status": 200,
+          "ok": true,
+          "final_url": "https://greasyfork.org/en/scripts/578457-yata-war-filters",
+          "elapsed_ms": 513,
+          "last_updated": "2026-05-16T20:08:36.000Z",
+          "metadata": {
+            "source": "greasyfork",
+            "last_updated": "2026-05-16T20:08:36.000Z",
+            "name": "YATA War Filters",
+            "version": "1.0",
+            "total_installs": 1,
+            "daily_installs": 1,
+            "good_ratings": 0,
+            "bad_ratings": 0,
+            "deleted": false
+          },
+          "error": null,
+          "checked_at": "2026-05-17T03:36:28Z"
+        }
+      ]
+    },
+    "body_mentions_url": false
+  },
+  {
+    "thread_id": -1,
+    "title": "[NEW SCRIPT] Yata War Filters",
+    "author": {
+      "username": "",
+      "id": null
+    },
+    "forum_id": null,
+    "first_post_time": null,
+    "last_post_time": null,
+    "first_post_iso": "2026-05-17T03:36:19Z",
+    "last_post_iso": "2026-05-17T03:36:19Z",
+    "posts": 0,
+    "views": 0,
+    "rating": 0,
+    "is_locked": false,
+    "is_sticky": false,
+    "thread_url": "",
+    "body_file": null,
+    "body_chars": 0,
+    "url_count": 1,
+    "urls": [
+      {
+        "url": "https://greasyfork.org/en/scripts/578457-yata-war-filters ",
+        "kind": "install",
+        "host": "greasyfork.org",
+        "host_label": "Greasy Fork"
+      }
+    ],
+    "primary_url": {
+      "url": "https://greasyfork.org/en/scripts/578457-yata-war-filters ",
+      "kind": "install",
+      "host": "greasyfork.org",
+      "host_label": "Greasy Fork"
+    },
+    "secondary_url": null,
+    "intent": "",
+    "tool_type": "userscript",
+    "tags": [
+      "qol"
+    ],
+    "_added_manually": true,
+    "_manual_edits": {
+      "_created": "2026-05-17T03:36:19Z",
+      "title": "2026-05-17T03:36:25Z",
+      "author": "2026-05-17T03:36:25Z",
+      "thread_url": "2026-05-17T03:36:25Z",
+      "intent": "2026-05-17T03:36:25Z",
+      "tool_type": "2026-05-17T03:36:25Z",
+      "tags": "2026-05-17T03:36:25Z",
+      "urls": "2026-05-17T03:36:25Z",
+      "primary_url": "2026-05-17T03:36:25Z",
+      "secondary_url": "2026-05-17T03:36:25Z",
+      "manual_status": "2026-05-17T03:36:25Z"
+    },
+    "manual_status": "",
+    "health": {
+      "checked_at": "2026-05-17T03:36:28Z",
+      "status": "ok",
+      "primary_status": "ok",
+      "last_updated": "2026-05-16T20:08:36Z",
+      "url_checks": [
+        {
+          "url": "https://greasyfork.org/en/scripts/578457-yata-war-filters ",
+          "kind": "install",
+          "host": "greasyfork.org",
+          "http_status": 200,
+          "ok": true,
+          "final_url": "https://greasyfork.org/en/scripts/578457-yata-war-filters",
+          "elapsed_ms": 513,
+          "last_updated": "2026-05-16T20:08:36.000Z",
+          "metadata": {
+            "source": "greasyfork",
+            "last_updated": "2026-05-16T20:08:36.000Z",
+            "name": "YATA War Filters",
+            "version": "1.0",
+            "total_installs": 1,
+            "daily_installs": 1,
+            "good_ratings": 0,
+            "bad_ratings": 0,
+            "deleted": false
+          },
+          "error": null,
+          "checked_at": "2026-05-17T03:36:28Z"
+        }
+      ]
+    },
+    "body_mentions_url": false
+  },
+  {
     "thread_id": 16564709,
     "title": "[SCRIPT] Personal Stat Average & Player Comparison",
     "author": {
